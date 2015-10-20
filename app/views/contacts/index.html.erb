@@ -1,0 +1,24 @@
+<% content_for(:title, "Contact Directory| Wikipages") %>
+
+<h1>Contacts</h1>
+
+<ul>
+  <% @contacts.each do |contact| %>
+  <li><a href="/contacts/<%= contact.id %>"><%= contact.name %></a></li>
+  <% end %>
+</ul>
+
+
+<h2>New contact</h2>
+
+<%= render('layouts/errors', :object => @contact) %>
+
+<form action="/contacts/" method="post">
+    <label for="contact_name">Name</label>
+    <input id="contact_name" name="contact[name]" type="text">
+    <label for="contact_phone">Phone</label>
+    <input id="contact_phone" name="contact[phone]" type="text">
+    <label for="contact_email">Email</label>
+    <input id="contact_email" name="contact[email]" type="text">
+  <button>Create Contact</button>
+</form>
